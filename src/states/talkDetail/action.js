@@ -40,8 +40,8 @@ export function asyncReceiveTalkDetail(talkId) {
 
 export function asyncToggleLikeTalkDetail() {
   return async (dispatch, getState) => {
-    const { autjUser, talkDetail } = getState();
-    dispatch(toggleLikeTalkDetailActionCreator(autjUser.id));
+    const { authUser, talkDetail } = getState();
+    dispatch(toggleLikeTalkDetailActionCreator(authUser.id));
 
     try {
       await api.toggleLikeTalk(talkDetail.id);
