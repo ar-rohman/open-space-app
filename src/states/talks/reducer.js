@@ -11,7 +11,7 @@ export default function talkReducer(talks = [], action = {}) {
         if (talk.id === action.payload.talkId) {
           return {
             ...talk,
-            likes: talk.lokes.inclides(action.payload.userId)
+            likes: talk.likes.includes(action.payload.userId)
               ? talk.likes.filter((id) => id !== action.payload.userId)
               : talk.likes.concat([action.payload.userId]),
           };
