@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { asyncReceiveTalkDetail, asyncToggleLikeTalkDetail } from '../states/talkDetail/action';
+import { asyncAddTalk } from '../states/talks/action';
 import TalkDetail from '../components/TalkDetail';
 import TalkItem from '../components/TalkItem';
 import TalkReplyInput from '../components/TalkReplyInput';
@@ -9,22 +12,19 @@ function DetailPage() {
   const {
     talkDetail = null,
     authUser,
-  } = {}; // @TODO: get talkDetail and authUser state from store
-  const dispatch = null; // @TODO: get dispatch function from store
+  } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // @TODO: dispatch async action to get talk detail by id
-
+    dispatch(asyncReceiveTalkDetail(id));
   }, [id, dispatch]);
 
   const onLikeTalk = () => {
-    // @TODO: dispatch async action to toggle like talk detail
-
+    dispatch(asyncToggleLikeTalkDetail());
   };
 
   const onReplyTalk = (text) => {
-    // @TODO: dispatch async action to add reply talk
-
+    dispatch(asyncAddTalk({ text, replyTo: id }));
   };
 
   if (!talkDetail) {

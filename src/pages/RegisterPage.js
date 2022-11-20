@@ -1,14 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { IoEarthOutline } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
+import { asyncRegisterUser } from '../states/users/action';
 import RegisterInput from '../components/RegisterInput';
 
 function RegisterPage() {
   const navigate = useNavigate();
-  const dispatch = null; // @TODO: get dispatch function from store
+  const dispatch = useDispatch();
 
   const onRegister = ({ name, id, password }) => {
-    // @TODO: dispatch async action to register
+    dispatch(asyncRegisterUser({ id, name, password }));
 
     navigate('/');
   };
