@@ -29,7 +29,7 @@ export function toggleLikeTalkDetailActionCreator(userId) {
 
 export function asyncReceiveTalkDetail(talkId) {
   return async (dispatch) => {
-    // dispatch(clearTalkDetailActionCreator());
+    dispatch(clearTalkDetailActionCreator());
     dispatch(showLoading());
     try {
       const talkDetail = await api.getTalkDetail(talkId);
